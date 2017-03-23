@@ -12,25 +12,26 @@ SET(CMAKE_CXX_COMPILER "g++")
 SET(CMAKE_C_COMPILER "gcc")
 
 # C++ compiler flags
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -pthread" )
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread" )
 
-# set source dir
-SET(${PROJECT_SOURCE_DIR} "src")
+# set source dir and test dir
+SET(SOURCE_DIR ${PROJECT_SOURCE_DIR}/src)
+SET(TEST_DIR ${PROJECT_SOURCE_DIR}/test)
 
 # configure header file to pass CMake settings to the source code
 CONFIGURE_FILE(
-    "${PROJECT_SOURCE_DIR}/cpp11config.hh.in"
-    "${PROJECT_BINARY_DIR}/cpp11config.hh"
+    ${PROJECT_SOURCE_DIR}/cpp11config.hh.in
+    ${PROJECT_BINARY_DIR}/cpp11config.hh
 )
  
 # add the binary tree to the search path for include files
 # so that we will find TutorialConfig.h
 INCLUDE_DIRECTORIES(
-    "${PROJECT_BINARY_DIR}"
-    "${PROJECT_SOURCE_DIR}/Builder"
-    "${PROJECT_SOURCE_DIR}/Singleton"
-    "${PROJECT_SOURCE_DIR}/Factory"
-    "${PROJECT_SOURCE_DIR}/Visitor"
+    ${PROJECT_BINARY_DIR}
+    ${SOURCE_DIR}/Builder
+    ${SOURCE_DIR}/Singleton
+    ${SOURCE_DIR}/Factory
+    ${SOURCE_DIR}/Visitor
 )
 
 # Output directories
@@ -45,19 +46,23 @@ SET(
 )
 
 ADD_SUBDIRECTORY(
-    "${PROJECT_SOURCE_DIR}/src/Builder"
+    ${SOURCE_DIR}/Builder
 )
 
 ADD_SUBDIRECTORY(
-    "${PROJECT_SOURCE_DIR}/src/Singleton"
+    ${SOURCE_DIR}/Singleton
 )
 
 ADD_SUBDIRECTORY(
-    "${PROJECT_SOURCE_DIR}/src/Factory"
+    ${SOURCE_DIR}/Factory
 )
 
 ADD_SUBDIRECTORY(
-    "${PROJECT_SOURCE_DIR}/src/Visitor"
+    ${SOURCE_DIR}/Visitor
+)
+
+ADD_SUBDIRECTORY(
+    ${TEST_DIR}
 )
 
 # add the executable
@@ -71,7 +76,7 @@ TARGET_LINK_LIBRARIES(
     Builder
     Singleton
     Factory
-	Visitor
+    Visitor
 )
 
 
