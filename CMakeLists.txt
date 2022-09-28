@@ -1,18 +1,18 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8.12)
 
 # set project name
 PROJECT(cpp11)
 
 # set version number.
 SET(Cpp11_VERSION_MAJOR 0)
-SET(Cpp11_VERSION_MINOR 6)
+SET(Cpp11_VERSION_MINOR 7)
 
 # set default compilers
 SET(CMAKE_CXX_COMPILER "g++")
 SET(CMAKE_C_COMPILER "gcc")
 
 # C++ compiler flags
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread" )
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread -Wall -pedantic" )
 
 # set source dir and test dir
 SET(SOURCE_DIR ${PROJECT_SOURCE_DIR}/src)

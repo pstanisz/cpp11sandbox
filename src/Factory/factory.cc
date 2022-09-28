@@ -50,6 +50,8 @@ bool Writer::write()
     ofstream lOutfile( iFilePath, ios::out | ios::binary );
     lOutfile.write( &iContent[0], iContent.size() );
     lOutfile.close();
+
+    return lOutfile.good();
 }
 
 void Writer::setContent( const string aContent )
@@ -96,4 +98,6 @@ Document::Ptr DocumentFactory::getDocument( const string aFilePath, DocumentType
     {
         return Document::Ptr( new HtmlDocument( aFilePath ) );
     }
+
+    return Document::Ptr( nullptr );
 }

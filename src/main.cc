@@ -262,5 +262,11 @@ void runExample( Pattern aPatternId )
             aVisitable->accept( lAreaCalculator );
         } );
     } break;
+
+    case Last:
+    default:
+    {
+        cout << "Such a pattern is not defined" << endl;
+    } break;
     }
 }
